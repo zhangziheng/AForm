@@ -437,10 +437,14 @@
         },
         getObjType: function(obj) {
             if (obj === undefined) {
-                return "undefined";
+                // return "undefined";
+                //by zzh
+                return "String";
             }
             if (obj === null) {
-                return "null";
+                // return "null";
+                //by zzh
+                return "String";
             }
             if (obj.constructor == Array) {
                 return "Array";
@@ -1963,10 +1967,24 @@
         jpath = jpath || "";
 
         if (input == null) {
-            return "";//忽略null
+            // return "";//忽略null
+            //by zzh
+            //是否忽略，应该参考schemaMode
+            if(this.config.schemaMode=="remote"){
+                return "";
+            }else{
+                input = "";
+            }
         }
         if (input == undefined) {
-            input = 'undefined';
+            // input = 'undefined';
+            //by zzh
+            //是否忽略，应该参考schemaMode
+            if(this.config.schemaMode=="remote"){
+                return "";
+            }else{
+                input = "";
+            }
         }
 
         var fieldConfig = this.getConfigByPath(jpath);
